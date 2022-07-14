@@ -22,14 +22,10 @@ class Board
       game_board[placement - 1] = player # array starts from 0 but board starts from 1
     else
       puts 'Invalid move! please select a different spot'
+      submit_move(gets.chomp.to_i, player)
     end
     print_board
-    return unless winner? || tie?
-
-    game_over(player)
   end
-
-  private
 
   def winner?
     # check rows
@@ -50,6 +46,7 @@ class Board
 
   def tie?
     game_board.each do |element|
+      next if element.is_a?(String)
       return false if element.between?(1, 9)
     end
     true
@@ -59,13 +56,5 @@ class Board
     return false if game_board[placement - 1] == 'X' || game_board[placement - 1] == 'O' || !placement.between?(1, 9)
 
     true
-  end
-
-  def game_over(player)
-    if tie?
-      puts "it's a tie! nobody wins."
-    elsif winner?
-      puts "player #{player} wins!"
-    end
   end
 end
