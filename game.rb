@@ -19,6 +19,8 @@ class Game
     play_turns
   end
 
+  private
+
   def play_turns
     until game_over?
       puts "Player #{current_player.marker}'s turn"
@@ -29,14 +31,12 @@ class Game
     end
   end
 
-  private
-
   def change_turn
     @current_player = if current_player == player1
-                       player2
-                     else
-                       player1
-                     end
+                        player2
+                      else
+                        player1
+                      end
   end
 
   def game_over?

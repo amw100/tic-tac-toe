@@ -52,6 +52,8 @@ class Board
     true
   end
 
+  private
+
   def valid_move?(placement)
     return false if game_board[placement - 1] == 'X' || game_board[placement - 1] == 'O' || !placement.between?(1, 9)
 
