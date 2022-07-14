@@ -51,6 +51,3 @@ class Game
     false
   end
 end
-
-my_game = Game.new
-my_game.play
